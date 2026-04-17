@@ -1,0 +1,8 @@
+{
+  "name": "lua-linter",
+  "type": "agent",
+  "version": "1.0.0",
+  "description": "Static analysis linter for NelxRated: WoW Midnight 12.x issues, addon bugs, code quality",
+  "file": "AGENT.md",
+  "tags": ["wow"]
+}

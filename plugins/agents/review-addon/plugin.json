@@ -1,0 +1,8 @@
+{
+  "name": "review-addon",
+  "type": "agent",
+  "version": "1.0.0",
+  "description": "Reviews NelxRated implementation completeness against epic docs and updates docs to match",
+  "file": "AGENT.md",
+  "tags": ["wow"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "wow-api-research",
+  "type": "skill",
+  "version": "1.0.0",
+  "description": "Research and verify WoW API assumptions with sourced facts before they become story criteria",
+  "file": "SKILL.md",
+  "tags": ["wow"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "wow-ui-designer",
+  "type": "skill",
+  "version": "1.0.0",
+  "description": "NelxRated Midnight design system and UI reference for production-ready WoW 12.x frame code",
+  "file": "SKILL.md",
+  "tags": ["wow"]
+}

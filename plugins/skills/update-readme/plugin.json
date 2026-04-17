@@ -1,0 +1,8 @@
+{
+  "name": "update-readme",
+  "type": "skill",
+  "version": "1.0.0",
+  "description": "Sync README.md with current NelxRated features from epic docs and CLAUDE.md",
+  "file": "SKILL.md",
+  "tags": ["wow"]
+}

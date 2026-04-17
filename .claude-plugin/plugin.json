@@ -1,0 +1,9 @@
+{
+  "name": "nelx-claude",
+  "description": "Agents and skills for WoW addon development and general use",
+  "author": {
+    "name": "Nelxbuilds",
+    "url": "https://github.com/Nelxbuilds"
+  },
+  "version": "1.0.0"
+}

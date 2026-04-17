@@ -1,0 +1,7 @@
+{
+  "name": "implement-story",
+  "type": "agent",
+  "version": "1.0.0",
+  "description": "Implements a specific NelxRated story end-to-end: reads spec, writes Lua, updates .toc",
+  "file": "AGENT.md"
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "nelx-claude",
+  "description": "Agents and skills for WoW addon development and general use",
+  "owner": {
+    "name": "Nelxbuilds",
+    "url": "https://github.com/Nelxbuilds"
+  },
+  "plugins": [
+    {
+      "name": "implement-story",
+      "description": "Implements a specific NelxRated story end-to-end: reads spec, writes Lua, updates .toc",
+      "source": "./plugins/agents/implement-story",
+      "category": "productivity",
+      "tags": ["wow"]
+    },
+    {
+      "name": "lua-linter",
+      "description": "Static analysis linter for NelxRated: WoW Midnight 12.x issues, addon bugs, code quality",
+      "source": "./plugins/agents/lua-linter",
+      "category": "productivity",
+      "tags": ["wow"]
+    },
+    {
+      "name": "release-prep",
+      "description": "Prepares NelxRated for CurseForge release: TOC fixes, packaging files, go/no-go report",
+      "source": "./plugins/agents/release-prep",
+      "category": "productivity",
+      "tags": ["wow"]
+    },
+    {
+      "name": "review-addon",
+      "description": "Reviews NelxRated implementation completeness against epic docs and updates docs to match",
+      "source": "./plugins/agents/review-addon",
+      "category": "productivity",
+      "tags": ["wow"]
+    },
+    {
+      "name": "write-story",
+      "description": "Writes clear, unambiguous NelxRated stories by interrogating requirements before writing",
+      "source": "./plugins/agents/write-story",
+      "category": "productivity",
+      "tags": ["wow"]
+    },
+    {
+      "name": "ship",
+      "description": "Ship a new version: bump semver, commit, tag, push to trigger CurseForge release",
+      "source": "./plugins/skills/ship",
+      "category": "productivity",
+      "tags": ["wow"]
+    },
+    {
+      "name": "update-readme",
+      "description": "Sync README.md with current NelxRated features from epic docs and CLAUDE.md",
+      "source": "./plugins/skills/update-readme",
+      "category": "productivity",
+      "tags": ["wow"]
+    },
+    {
+      "name": "wow-api-research",
+      "description": "Research and verify WoW API assumptions with sourced facts before they become story criteria",
+      "source": "./plugins/skills/wow-api-research",
+      "category": "productivity",
+      "tags": ["wow"]
+    },
+    {
+      "name": "wow-ui-designer",
+      "description": "NelxRated Midnight design system and UI reference for production-ready WoW 12.x frame code",
+      "source": "./plugins/skills/wow-ui-designer",
+      "category": "productivity",
+      "tags": ["wow"]
+    }
+  ]
+}
