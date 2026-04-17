@@ -17,20 +17,43 @@ Then install individual plugins:
 ```bash
 claude plugin install implement-story@nelx-claude
 claude plugin install lua-linter@nelx-claude
+claude plugin install release-prep@nelx-claude
+claude plugin install review-addon@nelx-claude
+claude plugin install write-story@nelx-claude
+claude plugin install ship@nelx-claude
+claude plugin install update-readme@nelx-claude
 claude plugin install wow-api-research@nelx-claude
+claude plugin install wow-ui-designer@nelx-claude
 ```
 
 ---
 
 ## Available Plugins
 
-| Name | Type | Tags | Description |
-|------|------|------|-------------|
-| `implement-story` | agent | — | Implements a feature story end-to-end: reads spec, writes code, runs tests |
-| `lua-linter` | agent | wow | Lints and fixes Lua files, focused on WoW addon conventions |
-| `wow-api-research` | skill | wow | Researches WoW API usage, finds correct event/function signatures |
+### Agents
 
-Plugins tagged `wow` are WoW addon-specific. All others are general-purpose.
+Installed to `.claude/agents/`. Claude Code selects them automatically based on task context, or trigger explicitly.
+
+| Name | Tags | Description |
+|------|------|-------------|
+| `implement-story` | wow | Reads a story spec, writes production code, updates the file manifest, ticks acceptance criteria |
+| `lua-linter` | wow | Static analysis for WoW addon Lua — critical bugs, performance issues, code quality. Read-only. |
+| `release-prep` | wow | Fixes manifest fields, creates packaging files, runs linter, checks story completeness, go/no-go report |
+| `review-addon` | wow | Compares story doc acceptance criteria against actual code; updates docs to reflect reality |
+| `write-story` | wow | Interrogates requirements until unambiguous, then writes a tight story doc. Does not write code. |
+
+### Skills
+
+Installed to `.claude/skills/`. Invoked via slash command or by Claude when task matches.
+
+| Name | Tags | Description |
+|------|------|-------------|
+| `ship` | wow | Semver bump → release-prep → README sync → commit → tag → push |
+| `update-readme` | wow | Rewrites README from completed story docs and CLAUDE.md |
+| `wow-api-research` | wow | Researches WoW API questions with sourced facts before they become story criteria or code |
+| `wow-ui-designer` | wow | Writes production-ready WoW 12.x Lua UI code using the project's design system |
+
+Plugins tagged `wow` are WoW addon-specific.
 
 ---
 
@@ -38,25 +61,38 @@ Plugins tagged `wow` are WoW addon-specific. All others are general-purpose.
 
 ### Agents
 
-Installed to `.claude/agents/`. Claude Code selects them automatically based on task context, or trigger explicitly:
+Trigger by context or explicitly:
 
-> "Use the implement-story agent to build this feature."
-> "Implement the feature described in STORY-42.md"
+> "Implement story 3-2."
+> "Use the write-story agent to plan this feature."
+> "Is the addon ready to ship?"
 
 ### Skills
 
-Installed to `.claude/skills/`. Invoked via slash command or by Claude when task matches:
-
 ```
-/wow-api-research
+/ship patch
+/wow-api-research what event fires when a rated match ends?
+/wow-ui-designer
+/update-readme
 ```
 
 ---
 
 ## Adding a Plugin
 
-1. Create `plugins/<name>/` directory
-2. Add `AGENT.md` or `SKILL.md` with prompt content
+1. Create `plugins/agents/<name>/` or `plugins/skills/<name>/`
+2. Add `AGENT.md` or `SKILL.md` with frontmatter + prompt body:
+
+```markdown
+---
+name: my-plugin
+description: Trigger description for Claude to auto-select this plugin.
+tools: Read, Write, Edit, Glob, Grep, Bash
+---
+# My Plugin
+...prompt body...
+```
+
 3. Add `plugin.json`:
 
 ```json
@@ -79,17 +115,23 @@ Installed to `.claude/skills/`. Invoked via slash command or by Claude when task
 ```
 nelx-claude/
   .claude-plugin/
-    marketplace.json    marketplace listing
-    plugin.json         metadata
+    marketplace.json    canonical plugin registry
+    plugin.json         marketplace metadata
   plugins/
-    implement-story/
-      AGENT.md
-      plugin.json
-    lua-linter/
-      AGENT.md
-      plugin.json
-    wow-api-research/
-      SKILL.md
-      plugin.json
+    agents/
+      implement-story/
+      lua-linter/
+      release-prep/
+      review-addon/
+      write-story/
+    skills/
+      ship/
+      update-readme/
+      wow-api-research/
+      wow-ui-designer/
+        references/
+          midnight-ui-api.md
+          settings-widgets.md
+  CLAUDE.md
   README.md
 ```
