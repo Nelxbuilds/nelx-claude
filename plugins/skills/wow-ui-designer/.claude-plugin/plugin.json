@@ -1,5 +1,8 @@
 {
   "name": "wow-ui-designer",
-  "version": "1.0.0",
-  "skills": ["./"]
+  "description": "WoW addon UI designer and design system reference. Trigger for freeform UI work — e.g. \"the overlay looks bad\", \"redesign the settings panel\", \"add a new frame\". Always outputs production-ready Lua, never pseudocode.",
+  "author": {
+    "name": "Nelxbuilds",
+    "url": "https://github.com/Nelxbuilds"
+  }
 }

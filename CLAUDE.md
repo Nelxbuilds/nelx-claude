@@ -10,40 +10,68 @@ Personal Claude Code plugin marketplace — WoW addon development tools and gene
 
 ```
 .claude-plugin/
-  plugin.json         root manifest — lists all skills and agents arrays
+  plugin.json         root marketplace manifest
+  marketplace.json    marketplace listing (used by claude plugin marketplace add)
 plugins/
-  agents/<name>/      AGENT.md only (no plugin.json)
-  skills/<name>/      SKILL.md only (+ references/ if needed, no plugin.json)
+  agents/<name>/
+    .claude-plugin/
+      plugin.json     per-plugin manifest (required)
+    agents/
+      <name>.md       agent definition (frontmatter + prompt)
+  skills/<name>/
+    .claude-plugin/
+      plugin.json     per-plugin manifest (required)
+    skills/
+      <name>/
+        SKILL.md      skill definition (frontmatter + prompt)
+    references/       optional reference files (wow-ui-designer only)
 ```
 
 ## Plugin Anatomy
 
-Root `.claude-plugin/plugin.json` lists all plugins:
+Root `.claude-plugin/marketplace.json` lists all plugins for distribution:
 ```json
 {
   "name": "nelx-claude",
-  "version": "1.0.0",
-  "skills": ["./plugins/skills/ship", ...],
-  "agents": ["./plugins/agents/implement-story", ...]
+  "owner": { "name": "Nelxbuilds" },
+  "plugins": [
+    { "name": "ship", "source": "./plugins/skills/ship", ... },
+    { "name": "implement-story", "source": "./plugins/agents/implement-story", ... }
+  ]
 }
 ```
 
-Each plugin needs only one file — **no per-plugin `plugin.json`**:
+Each plugin directory MUST have `.claude-plugin/plugin.json` (required by Claude Code for discovery):
+```json
+{
+  "name": "plugin-name",
+  "description": "Description used for auto-triggering.",
+  "author": { "name": "Nelxbuilds", "url": "https://github.com/Nelxbuilds" }
+}
+```
 
-**`AGENT.md` / `SKILL.md`** — frontmatter + prompt body:
+**Agents** — `agents/<name>.md` with frontmatter:
 ```markdown
 ---
 name: plugin-name
 description: Trigger description for Claude to auto-select this plugin.
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
-# Plugin Title
+# Agent Title
 ...prompt body...
 ```
 
-For user-invocable skills, add `user_invocable: true` and optionally `args: "<arg-description>"` to frontmatter.
+**Skills** — `skills/<name>/SKILL.md` with frontmatter:
+```markdown
+---
+name: plugin-name
+description: Trigger description. Add "Use when user says..." for slash-command triggers.
+---
+# Skill Title
+...prompt body...
+```
 
-After creating a plugin, add its path to the `skills` or `agents` array in `.claude-plugin/plugin.json`.
+After creating a plugin: add its path to `plugins` array in `.claude-plugin/marketplace.json`.
 
 ## Plugin Design Rules
 

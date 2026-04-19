@@ -1,5 +1,8 @@
 {
   "name": "update-readme",
-  "version": "1.0.0",
-  "skills": ["./"]
+  "description": "Sync README.md with current project features by reading story docs and CLAUDE.md. Use when the user says \"update readme\", \"sync readme\", \"readme is out of date\", \"/update-readme\", or before shipping a release.",
+  "author": {
+    "name": "Nelxbuilds",
+    "url": "https://github.com/Nelxbuilds"
+  }
 }

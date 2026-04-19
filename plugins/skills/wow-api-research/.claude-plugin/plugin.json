@@ -1,5 +1,8 @@
 {
   "name": "wow-api-research",
-  "version": "1.0.0",
-  "skills": ["./"]
+  "description": "Research and verify WoW API assumptions before they become story criteria or code. Use when you need to confirm an API exists, what it returns, which events fire, or how other addons solve a specific problem.",
+  "author": {
+    "name": "Nelxbuilds",
+    "url": "https://github.com/Nelxbuilds"
+  }
 }
