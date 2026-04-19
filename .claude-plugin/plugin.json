@@ -5,5 +5,18 @@
     "name": "Nelxbuilds",
     "url": "https://github.com/Nelxbuilds"
   },
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "skills": [
+    "./plugins/skills/ship",
+    "./plugins/skills/update-readme",
+    "./plugins/skills/wow-api-research",
+    "./plugins/skills/wow-ui-designer"
+  ],
+  "agents": [
+    "./plugins/agents/implement-story",
+    "./plugins/agents/lua-linter",
+    "./plugins/agents/release-prep",
+    "./plugins/agents/review-addon",
+    "./plugins/agents/write-story"
+  ]
 }

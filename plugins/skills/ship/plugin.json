@@ -1,8 +1,0 @@
-{
-  "name": "ship",
-  "type": "skill",
-  "version": "1.0.0",
-  "description": "Ship a new version: bump semver, commit, tag, push to trigger CurseForge release",
-  "file": "SKILL.md",
-  "tags": ["wow"]
-}

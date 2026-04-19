@@ -1,8 +1,0 @@
-{
-  "name": "write-story",
-  "type": "agent",
-  "version": "1.0.0",
-  "description": "Writes clear, unambiguous NelxRated stories by interrogating requirements before writing",
-  "file": "AGENT.md",
-  "tags": ["wow"]
-}

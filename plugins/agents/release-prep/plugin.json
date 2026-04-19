@@ -1,8 +1,0 @@
-{
-  "name": "release-prep",
-  "type": "agent",
-  "version": "1.0.0",
-  "description": "Prepares NelxRated for CurseForge release: TOC fixes, packaging files, go/no-go report",
-  "file": "AGENT.md",
-  "tags": ["wow"]
-}

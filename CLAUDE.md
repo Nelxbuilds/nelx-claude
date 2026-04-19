@@ -10,27 +10,25 @@ Personal Claude Code plugin marketplace — WoW addon development tools and gene
 
 ```
 .claude-plugin/
-  marketplace.json    canonical plugin registry — register all plugins here
-  plugin.json         marketplace metadata (name, author, version)
+  plugin.json         root manifest — lists all skills and agents arrays
 plugins/
-  agents/<name>/      AGENT.md + plugin.json
-  skills/<name>/      SKILL.md + plugin.json  (+ references/ if needed)
+  agents/<name>/      AGENT.md only (no plugin.json)
+  skills/<name>/      SKILL.md only (+ references/ if needed, no plugin.json)
 ```
 
 ## Plugin Anatomy
 
-Every plugin needs two files:
-
-**`plugin.json`** (same schema for agents and skills):
+Root `.claude-plugin/plugin.json` lists all plugins:
 ```json
 {
-  "name": "plugin-name",
-  "type": "agent",           // or "skill"
+  "name": "nelx-claude",
   "version": "1.0.0",
-  "description": "One-line description",
-  "file": "AGENT.md"         // or "SKILL.md"
+  "skills": ["./plugins/skills/ship", ...],
+  "agents": ["./plugins/agents/implement-story", ...]
 }
 ```
+
+Each plugin needs only one file — **no per-plugin `plugin.json`**:
 
 **`AGENT.md` / `SKILL.md`** — frontmatter + prompt body:
 ```markdown
@@ -45,7 +43,7 @@ tools: Read, Write, Edit, Glob, Grep, Bash
 
 For user-invocable skills, add `user_invocable: true` and optionally `args: "<arg-description>"` to frontmatter.
 
-After creating a plugin, register it in `.claude-plugin/marketplace.json` under `plugins[]`.
+After creating a plugin, add its path to the `skills` or `agents` array in `.claude-plugin/plugin.json`.
 
 ## Plugin Design Rules
 
