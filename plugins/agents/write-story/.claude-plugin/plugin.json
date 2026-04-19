@@ -1,6 +1,6 @@
 {
   "name": "write-story",
-  "description": "Writes clear, unambiguous stories. Use when the user describes a feature idea, says \"write story\", \"new story\", \"plan a feature\", or \"add story to epic N\". Asks clarifying questions until all ambiguity is resolved, then produces a tight story doc. Does NOT write code.",
+  "description": "Writes unambiguous story docs. Interrogates reqs → resolves ambiguity → tight spec. Trigger: \"write story\", \"new story\", \"plan a feature\", \"add story to epic N\". No code.",
   "author": {
     "name": "Nelxbuilds",
     "url": "https://github.com/Nelxbuilds"

@@ -1,12 +1,6 @@
 ---
 name: wow-ui-designer
-description: >
-  WoW addon UI designer and design system reference. Used as a reference by the
-  implement-story agent for colours, spacing, and frame patterns. Trigger directly only
-  for freeform UI work outside a story context — e.g. "the overlay looks bad",
-  "redesign the settings panel", "add a new frame". For story-based UI, use
-  implement-story instead (it reads this skill automatically).
-  Always outputs production-ready Lua, never pseudocode.
+description: "WoW 12.x UI designer. Prod Lua only, no pseudocode. Trigger: \"overlay looks bad\", \"redesign settings panel\", \"add frame\". Story-based UI → use implement-story instead."
 ---
 
 # WoW Addon UI/UX Designer

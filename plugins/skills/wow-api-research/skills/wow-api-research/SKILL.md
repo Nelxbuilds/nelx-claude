@@ -1,12 +1,6 @@
 ---
 name: wow-api-research
-description: >
-  Research and verify WoW API assumptions before they become story criteria or code.
-  Use when you need to confirm an API exists, what it returns, which events fire,
-  or how other addons solve a specific problem. Searches Wowpedia, addon sources,
-  and community resources to give a sourced answer.
-  Trigger: "/wow-api <question>", or "does WoW have an API for...", "how do addons get...",
-  "verify this API", "what event fires when...", "is this API still available in 12.x?"
+description: "Verify WoW API: existence, return vals, events, addon patterns. Sourced from Wowpedia/GitHub. Trigger: \"does WoW have API for...\", \"what event fires when...\", \"is API still in 12.x?\", \"/wow-api\"."
 user_invocable: true
 args: "<question about a WoW API, event, or addon technique>"
 ---

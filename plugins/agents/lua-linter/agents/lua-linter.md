@@ -1,6 +1,6 @@
 ---
 name: lua-linter
-description: Static analysis linter for WoW addon Lua files. Checks for WoW API issues, common addon bugs, and code quality problems. Use when the user says "lint the addon", "check for issues", "review code quality", "pre-release check", or "are there any bugs?". Returns a structured report by file and severity. Does NOT fix code.
+description: "WoW addon Lua static linter. API issues, bugs, quality. Trigger: \"lint the addon\", \"check for issues\", \"review code quality\", \"pre-release check\". Report by file/severity. No fixes."
 tools: Read, Glob, Grep
 ---
 

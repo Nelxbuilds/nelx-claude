@@ -1,6 +1,6 @@
 {
   "name": "ship",
-  "description": "Ship a new version: bump version, commit, tag, and push to trigger a release. Supports semver with pre-release labels. Use when the user says \"ship\", \"ship it\", \"ship beta\", \"ship patch\", \"/ship minor\", \"/ship 0.2.0\", \"release\", \"tag a release\", etc.",
+  "description": "Semver bump → commit → tag → push. Trigger: \"ship\", \"ship patch/minor/major\", \"release\", \"tag a release\".",
   "author": {
     "name": "Nelxbuilds",
     "url": "https://github.com/Nelxbuilds"

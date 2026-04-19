@@ -1,6 +1,6 @@
 {
   "name": "release-prep",
-  "description": "Prepares a WoW addon for release. Fixes manifest fields, creates missing packaging files, runs the linter, checks story completeness, and prints a go/no-go report. Use when the user says \"prepare a release\", \"get ready to publish\", \"release prep\", or \"am I ready to ship?\". Does NOT upload or push to git.",
+  "description": "WoW addon release prep. Fix manifest, create pkgmeta/CHANGELOG/LICENSE, lint, check stories → go/no-go. Trigger: \"release prep\", \"prepare a release\", \"am I ready to ship?\". No upload/push.",
   "author": {
     "name": "Nelxbuilds",
     "url": "https://github.com/Nelxbuilds"

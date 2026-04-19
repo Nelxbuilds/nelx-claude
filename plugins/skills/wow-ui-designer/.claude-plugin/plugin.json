@@ -1,6 +1,6 @@
 {
   "name": "wow-ui-designer",
-  "description": "WoW addon UI designer and design system reference. Trigger for freeform UI work — e.g. \"the overlay looks bad\", \"redesign the settings panel\", \"add a new frame\". Always outputs production-ready Lua, never pseudocode.",
+  "description": "WoW 12.x UI designer. Prod Lua only, no pseudocode. Trigger: \"overlay looks bad\", \"redesign settings panel\", \"add frame\". Story-based UI → use implement-story instead.",
   "author": {
     "name": "Nelxbuilds",
     "url": "https://github.com/Nelxbuilds"

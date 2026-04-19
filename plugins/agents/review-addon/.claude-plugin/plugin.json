@@ -1,6 +1,6 @@
 {
   "name": "review-addon",
-  "description": "Reviews the addon for implementation completeness and keeps documentation up to date. Use when the user explicitly asks to review the addon, asks if docs are accurate, wants a status check, or says \"what's still missing?\". Do NOT trigger automatically after code changes — only run when the user asks.",
+  "description": "Reviews addon impl vs story docs, updates doc checkboxes. Trigger: \"review addon\", \"docs accurate?\", \"what's missing?\". Explicit request only — NOT auto after code changes.",
   "author": {
     "name": "Nelxbuilds",
     "url": "https://github.com/Nelxbuilds"

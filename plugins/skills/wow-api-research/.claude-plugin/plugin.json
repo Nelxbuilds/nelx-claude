@@ -1,6 +1,6 @@
 {
   "name": "wow-api-research",
-  "description": "Research and verify WoW API assumptions before they become story criteria or code. Use when you need to confirm an API exists, what it returns, which events fire, or how other addons solve a specific problem.",
+  "description": "Verify WoW API: existence, return vals, events, addon patterns. Sourced from Wowpedia/GitHub. Trigger: \"does WoW have API for...\", \"what event fires when...\", \"is API still in 12.x?\", \"/wow-api\".",
   "author": {
     "name": "Nelxbuilds",
     "url": "https://github.com/Nelxbuilds"

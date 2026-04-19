@@ -1,6 +1,6 @@
 ---
 name: implement-story
-description: Implements a story or feature spec end-to-end. Use when the user says "implement story X-Y", "build story X-Y", "code epic N", or similar. Reads the story doc, surveys existing code for context, writes production-ready code, and updates the file manifest if new files are added.
+description: "Impl story spec end-to-end. Trigger: \"implement story X-Y\", \"build story X-Y\", \"code epic N\". Reads spec → surveys code → writes prod code → updates manifest."
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 

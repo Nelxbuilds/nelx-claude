@@ -1,11 +1,6 @@
 ---
 name: update-readme
-description: >
-  Sync README.md with current project features by reading story docs and CLAUDE.md.
-  Use when the user says "update readme", "sync readme", "readme is out of date",
-  "/update-readme", or before shipping a release. Also use proactively after a new
-  epic is completed or when multiple stories have been implemented since the last
-  README update.
+description: "Sync README from story docs + CLAUDE.md. Trigger: \"update readme\", \"sync readme\", \"readme is out of date\"."
 user_invocable: true
 ---
 
