@@ -25,7 +25,20 @@ The user provides one of:
 - An explicit version like `0.2.0` or `1.0.0-beta`
 - No argument — ask which bump type they want
 
-## Step 3: Read Current Version and Existing Tags
+## Step 3: Check Working Tree
+
+Run `git status --porcelain`. If output is non-empty, warn:
+
+```
+⚠ Working tree has uncommitted changes:
+<list changed files>
+```
+
+Ask: **"Abort and commit/stash first, or continue (changes will be included in release commit)?"**
+
+Do NOT continue until user decides.
+
+## Step 4: Read Current Version and Existing Tags
 
 Read the version file (from CLAUDE.md) and extract the current version. Parse as semver: `MAJOR.MINOR.PATCH[-PRERELEASE]`
 
@@ -53,9 +66,9 @@ Look at existing tags matching `vX.Y.Z-beta*` (where X.Y.Z is current stable ver
 - `vX.Y.Z-beta` exists → `X.Y.Z-beta-1`
 - `vX.Y.Z-beta-N` is highest → `X.Y.Z-beta-(N+1)`
 
-Beta bumps skip Steps 5, 6, 7 — tag only, then push.
+Beta bumps skip Steps 6, 7, 8 — tag only, then push.
 
-## Step 4: Confirm
+## Step 5: Confirm
 
 For stable bumps show:
 ```
@@ -71,38 +84,56 @@ New tag:         v<new>
 
 If tag already exists, warn and ask how to proceed. Ask: **"Proceed?"** Do NOT continue until confirmed.
 
-## Step 5: Run Release Prep
+## Step 6: Run Release Prep (if available)
 
-Spawn the `release-prep` agent as a pre-flight check. If it reports blockers, show the report and ask whether to continue or abort.
+Check if `release-prep` agent is available (listed in system-reminder skills/agents). If available, spawn it as a pre-flight check. If it reports blockers, show the report and ask whether to continue or abort.
 
-## Step 5.5: Sync README
+If not available, skip this step silently.
 
-Run `/update-readme` automatically — no user prompt. Include any changes in the Step 7 commit.
+## Step 6.5: Sync README (if available)
 
-## Step 6: Update Version File
+Check if `/update-readme` skill is available (listed in system-reminder skills). If available, run it automatically — no user prompt. Include any changes in the Step 8 commit.
+
+If not available, skip this step silently.
+
+## Step 7: Update Version File
 
 Edit the version field in the file specified in CLAUDE.md.
 
-## Step 7: Update CHANGELOG.md
+## Step 8: Update CHANGELOG.md
 
-If `CHANGELOG.md` exists and has no section for the new version, add one at the top with today's date:
+If `CHANGELOG.md` exists and has no section for the new version:
 
+1. Generate changelog from commits since last tag:
+```bash
+git log $(git describe --tags --abbrev=0 2>/dev/null || git rev-list --max-parents=0 HEAD)..HEAD --oneline --no-decorate
+```
+
+2. Group commits into categories based on conventional commit prefixes (feat→Added, fix→Fixed, refactor/chore→Changed, etc.). Commits without prefixes go under Changed.
+
+3. Add section at top of CHANGELOG.md:
 ```markdown
 ## [<new-version>] -- <YYYY-MM-DD>
 
+### Added
+- <feat commits>
+
+### Fixed
+- <fix commits>
+
 ### Changed
-- Version bump from <old-version>
+- <other commits>
 ```
 
-Ask if user wants to flesh out the entry before continuing.
+Only include categories that have entries. Show the generated entry and ask: **"Edit changelog before continuing?"**
 
-## Step 8: Commit
+## Step 9: Commit
 
 Stage only changed files. Ask: **"Ready to commit?"**
 
 Commit message: `release: v<new-version>`
 
-## Step 9: Tag
+## Step 10: Tag
 
 Ask: **"Create tag v<new-version>?"**
 
@@ -110,7 +141,7 @@ Ask: **"Create tag v<new-version>?"**
 git tag -a v<new-version> -m "Release v<new-version>"
 ```
 
-## Step 10: Push
+## Step 11: Push
 
 Ask: **"Push commit and tag to origin?"**
 
@@ -118,7 +149,7 @@ Ask: **"Push commit and tag to origin?"**
 git push origin main --follow-tags
 ```
 
-## Step 11: Summary
+## Step 12: Summary
 
 ```
 Done! Released v<new-version>
@@ -133,4 +164,4 @@ Done! Released v<new-version>
 - Always ask before commits, tags, pushes. Never auto-proceed.
 - Never force-push. Push fails → tell user, let them decide.
 - Never amend commits. Always create new ones.
-- Co-author line on commit: `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>`
+- Co-author line on commit: `Co-Authored-By: Claude <noreply@anthropic.com>`
