@@ -1,0 +1,8 @@
+{
+  "name": "bug",
+  "description": "Track bugs in docs/bugs.md. Add or list entries. Trigger: \"log bug\", \"add bug\", \"list bugs\".",
+  "author": {
+    "name": "Nelxbuilds",
+    "url": "https://github.com/Nelxbuilds"
+  }
+}
